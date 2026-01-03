@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, User, Bot, Sparkles, Copy, ThumbsUp, ThumbsDown } from 'lucide-react';
-
+import projectsData from '../data/projects.json';
 const Chatbot = ({ darkMode }) => {
+  const [projects, setProjects] = useState(projectsData.projects || []);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
@@ -24,14 +25,17 @@ const Chatbot = ({ darkMode }) => {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Enhanced quick replies
+  // Enhanced quick replieszzfzfdds
   const quickReplies = [
     { text: 'About Wren', icon: '👤' },
     { text: 'Services', icon: '💼' },
     { text: 'Skills & Tech Stack', icon: '⚡' },
     { text: 'Experience', icon: '🎯' },
-    { text: 'Get in Touch', icon: '📧' }
+    { text: 'Get in Touch', icon: '📧' },
+    { text: 'Projects', icon: '📁' },
+    { text: 'Summarize Conversation', icon: '📝' }  // new button
   ];
+
 
   // Enhanced bot responses
   const getBotResponse = (userMessage) => {
@@ -52,12 +56,39 @@ const Chatbot = ({ darkMode }) => {
     else if (msg.includes('contact') || msg.includes('touch') || msg.includes('hire')) {
       return "Let's Connect!\n\n Ready to discuss your project?\n\n Click the 'Let's Work Together' button on the homepage\n Or check the Contact section\n\nI typically respond within 24 hours and offer:\n• Free initial consultation\n• Project estimates\n• Technical guidance";
     }
-    else if (msg.includes('portfolio') || msg.includes('project')) {
-      return "Check out my work!\n\n Browse the Projects section above to see:\n• Live applications\n• Code samples\n• Case studies\n\nEach project showcases different skills and technologies. Click on any project card to learn more!";
-    }
     else if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
       return "Hello! Great to meet you!\n\nI'm here to help you learn about Wren's work and expertise. Feel free to ask me anything or try one of the quick questions below!";
     } 
+    else if (msg.includes('project') || msg.includes('portfolio') || msg.includes('my projects')) {
+      if (projects.length === 0) return "No projects found yet.";
+
+      // Format projects nicely
+      let projectList = projects
+        .sort((a, b) => b.id - a.id) // sort by id descending
+        .map(
+          p =>
+            `• ${p.title} (${p.stack.join(', ')})\n  Live: ${p.link}\n  Code: ${p.repo}\n  ${p.description}`
+        )
+        .join('\n\n');
+
+      return `Here are my projects:\n\n${projectList}`;
+    }
+    else if (msg.includes('summarize') || msg.includes('summary')) {
+      if (messages.length === 0) return "No conversation to summarize yet.";
+
+      // Create a summary of the conversation
+      let summary = messages
+        .map(m => `${m.sender === 'user' ? 'You' : 'Bot'}: ${m.text}`)
+        .join('\n');
+
+      // Optionally truncate for long conversations
+      if (summary.length > 1000) {
+        summary = summary.slice(-1000); // last 1000 chars
+      }
+
+      return `Here's a summary of our conversation so far:\n\n${summary}`;
+    }
+
     else {
       return "I'd be happy to help! You can ask me about:\n\n• Wren's background and expertise\n• Services and offerings\n• Technical skills and technologies\n• Past projects and experience\n• How to get in touch\n\nWhat interests you most?";
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const FilterButtons = ({ filter, setFilter, darkMode, theme }) => {
-  const categories = ['all', 'frontend', 'fullstack', 'ui', 'experimental', 'react', 'backend', 'enterprise'];
+  const categories = ['all', 'frontend', 'fullstack', 'ui', 'experimental', 'react', 'backend', 'enterprise', 'demonstration', 'mobile', ];
   const maxVisible = 5;
   const [showMore, setShowMore] = useState(false);
   const dropdownRef = useRef(null);
