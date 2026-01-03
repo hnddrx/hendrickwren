@@ -60,7 +60,7 @@ const FilterButtons = ({ filter, setFilter, darkMode, theme }) => {
               }`}
             >
               <span className="flex items-center gap-1">
-                more
+                More
                 <svg 
                   className={`w-3 h-3 transition-transform duration-300 ${showMore ? 'rotate-180' : ''}`} 
                   fill="none" 

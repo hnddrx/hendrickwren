@@ -38,25 +38,25 @@ const Chatbot = ({ darkMode }) => {
     const msg = userMessage.toLowerCase();
 
     if (msg.includes('who') || msg.includes('about wren')) {
-      return "Wren Hendrick is a passionate **Full-Stack Developer** and **Odoo Specialist** with expertise in building scalable web applications and ERP solutions.\n\n✨ Specializes in:\n• Modern Web Development\n• Business Process Automation\n• Custom Odoo Modules\n• UI/UX Design";
+      return "Wren Hendrick is a passionate Full-Stack Developer and Odoo Specialist with expertise in building scalable web applications and ERP solutions.\n\n✨ Specializes in:\n• Modern Web Development\n• Business Process Automation\n• Custom Odoo Modules\n• UI/UX Design";
     } 
     else if (msg.includes('service')) {
-      return "**Professional Services Offered:**\n\n🎨 **Web Development**\n• Custom Web Applications\n• Responsive Design\n• Frontend & Backend Development\n\n⚙️ **Odoo Development**\n• Module Customization\n• Business Automation\n• ERP Integration\n\n🎯 **Consulting**\n• Technical Architecture\n• Code Review & Optimization\n• Project Planning";
+      return "Professional Services Offered:\n\n Web Development\n• Custom Web Applications\n• Responsive Design\n• Frontend & Backend Development\n\n Odoo Development\n• Module Customization\n• Business Automation\n• ERP Integration\n\n Consulting\n• Technical Architecture\n• Code Review & Optimization\n• Project Planning";
     } 
     else if (msg.includes('skill') || msg.includes('tech') || msg.includes('stack')) {
-      return "**Technical Expertise:**\n\n**Frontend:**\n• React, Next.js, Vue.js\n• TailwindCSS, Material-UI\n• Responsive Design\n\n**Backend:**\n• Python, Node.js, Express\n• Odoo Framework\n• RESTful APIs\n\n**Database:**\n• PostgreSQL, MongoDB\n• Database Design & Optimization\n\n**DevOps:**\n• Docker, CI/CD\n• Git, GitHub Actions\n• Cloud Deployment";
+      return "Technical Expertise:\n\nFrontend:\n• React, Next.js, Vue.js\n• TailwindCSS, Material-UI\n• Responsive Design\n\nBackend:\n• Python, Node.js, Express\n• Odoo Framework\n• RESTful APIs\n\nDatabase:\n• PostgreSQL, MongoDB\n• Database Design & Optimization\n\nDevOps:\n• Docker, CI/CD\n• Git, GitHub Actions\n• Cloud Deployment";
     } 
     else if (msg.includes('experience') || msg.includes('years')) {
-      return "Wren has **extensive experience** in:\n\n📊 **Odoo Development**\n• Custom module development\n• Business process automation\n• ERP system integration\n\n💻 **Full-Stack Development**\n• Building scalable applications\n• Modern web technologies\n• Agile development practices\n\n🎓 **Continuous Learning**\n• Always exploring new technologies\n• Contributing to open-source\n• Staying current with industry trends";
+      return "Wren has extensive experience in:\n\n Odoo Development\n• Custom module development\n• Business process automation\n• ERP system integration\n\n Full-Stack Development\n• Building scalable applications\n• Modern web technologies\n• Agile development practices\n\n🎓 Continuous Learning\n• Always exploring new technologies\n• Contributing to open-source\n• Staying current with industry trends";
     } 
     else if (msg.includes('contact') || msg.includes('touch') || msg.includes('hire')) {
-      return "**Let's Connect!**\n\n📧 Ready to discuss your project?\n\n✅ Click the **'Let's Work Together'** button on the homepage\n✅ Or check the **Contact** section\n\nI typically respond within 24 hours and offer:\n• Free initial consultation\n• Project estimates\n• Technical guidance";
+      return "Let's Connect!\n\n Ready to discuss your project?\n\n Click the 'Let's Work Together' button on the homepage\n Or check the Contact section\n\nI typically respond within 24 hours and offer:\n• Free initial consultation\n• Project estimates\n• Technical guidance";
     }
     else if (msg.includes('portfolio') || msg.includes('project')) {
-      return "**Check out my work!**\n\n🎨 Browse the **Projects** section above to see:\n• Live applications\n• Code samples\n• Case studies\n\nEach project showcases different skills and technologies. Click on any project card to learn more!";
+      return "Check out my work!\n\n Browse the Projects section above to see:\n• Live applications\n• Code samples\n• Case studies\n\nEach project showcases different skills and technologies. Click on any project card to learn more!";
     }
     else if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
-      return "Hello! 👋 Great to meet you!\n\nI'm here to help you learn about Wren's work and expertise. Feel free to ask me anything or try one of the quick questions below!";
+      return "Hello! Great to meet you!\n\nI'm here to help you learn about Wren's work and expertise. Feel free to ask me anything or try one of the quick questions below!";
     } 
     else {
       return "I'd be happy to help! You can ask me about:\n\n• Wren's background and expertise\n• Services and offerings\n• Technical skills and technologies\n• Past projects and experience\n• How to get in touch\n\nWhat interests you most?";
