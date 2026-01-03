@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Frontend Development",
+    "items": ["React", "TailwindCSS", "Next.js", "Responsive Design"]
+  },
+  {
+    "title": "Backend Development",
+    "items": ["Node.js", "Express", "MongoDB", "PostgreSQL", "Python", "Odoo Framework", "REST APIs"]
+  },
+  {
+    "title": "Deployment & DevOps",
+    "items": ["Vercel", "Docker", "CI/CD Pipelines", "Jenkins", "GitHub Actions"]
+  },
+  {
+    "title": "ERP & Business Automation",
+    "items": ["Odoo Customization", "PostgreSQL Integration", "Python Scripting", "Workflow Automation"]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "Code",
+    "title": "Web Development",
+    "description": "Building responsive, high-performance web apps using modern technologies like React, Node.js, and MongoDB."
+  },
+  {
+    "icon": "Eye",
+    "title": "UI/UX Design",
+    "description": "Designing intuitive interfaces and smooth user experiences that delight users and clients."
+  },
+  {
+    "icon": "Video",
+    "title": "Content Integration",
+    "description": "Integrating video, media, and APIs into projects for dynamic web experiences."
+  },
+  {
+    "icon": "Crosshair",
+    "title": "Problem Solving",
+    "description": "Efficient algorithms, debugging, and solving complex problems with clean code."
+  },
+  {
+    "icon": "Code",
+    "title": "Odoo Development",
+    "description": "Customizing and building Odoo modules, automating business workflows, and integrating with PostgreSQL databases using Python."
+  },
+  {
+    "icon": "Terminal",
+    "title": "DevOps & Version Control",
+    "description": "Containerizing applications with Docker, managing source control with Git and GitHub, and collaborating through structured branching and CI-ready workflows."
+  }
+]

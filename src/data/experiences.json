@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Python Developer",
+    "company": "InnovaThink Corporation (Contract)",
+    "period": "Jul 2025 - Present (6 mos)",
+    "location": "Philippines - Hybrid",
+    "description": "Working with Python, Trello, Jenkins, and other tools to deliver high-quality solutions."
+  },
+  {
+    "title": "Python Developer - Odoo (HRS)",
+    "company": "Direc Business Technologies, Inc.",
+    "period": "Aug 2024 - Jun 2025 (11 mos)",
+    "location": "Quezon City, Philippines - On-site",
+    "description": "Implemented and developed customized modules for clients in various industries to manage employee operations. Technologies used: PostgreSQL, GitFlow, Python."
+  },
+  {
+    "title": "HRS Technical Consultant",
+    "company": "Direc Business Technologies, Inc.",
+    "period": "Jan 2023 - Jul 2024 (1 yr 7 mos)",
+    "location": "Philippines",
+    "description": "Worked with JavaScript, Jasper Reports, and other technologies to provide technical consulting and software solutions."
+  },
+  {
+    "title": "Trainee",
+    "company": "Uplift Code Camp",
+    "period": "Sep 2022 - Dec 2022 (4 mos)",
+    "location": "Baguio City, Philippines",
+    "description": "Trained in JavaScript, Express.js, and other web development technologies."
+  },
+  {
+    "title": "Software Tester (Internship)",
+    "company": "Pangasinan State University",
+    "period": "Mar 2022 - Jul 2022 (5 mos)",
+    "location": "Urdaneta, Ilocos Region, Philippines",
+    "description": "Worked on Scholarship Management System, performing software testing using CSS, SQL, and other technologies."
+  }
+]

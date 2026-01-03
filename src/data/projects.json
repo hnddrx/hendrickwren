@@ -1,0 +1,84 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "src": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800",
+      "stack": ["JavaScript", "HTML", "CSS"],
+      "link": "https://dice-game-ten-ruby.vercel.app",
+      "category": ["frontend", "ui"],
+      "title": "Dice Game",
+      "repo": "https://github.com/hnddrx/RollTwoDice",
+      "description": "A simple dice game built with JavaScript, HTML, and CSS. Test your luck and enjoy a quick browser-based game."
+    },
+    {
+      "id": 2,
+      "src": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
+      "stack": ["JavaScript", "HTML", "CSS", "Node.js", "React"],
+      "link": "https://anoni-blogs.vercel.app",
+      "category": ["fullstack"],
+      "title": "Anoni Blogs",
+      "repo": "https://github.com/hnddrx/AnoniBlogs",
+      "description": "A privacy-focused blogging platform that allows users to express themselves anonymously without fear of judgment."
+    },
+    {
+      "id": 3,
+      "src": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+      "stack": ["JavaScript", "HTML", "CSS", "Node.js", "React", "Express", "MongoDB"],
+      "link": "https://lean-on.vercel.app",
+      "category": ["fullstack", "ui"],
+      "title": "Lean On",
+      "repo": "https://github.com/hnddrx/LeanOn",
+      "description": "An appointment scheduling platform that enables users to book consultations with mental health professionals."
+    },
+    {
+      "id": 4,
+      "src": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800",
+      "stack": ["JavaScript", "HTML", "CSS", "Node.js", "React", "Express", "MongoDB"],
+      "link": "https://projectic.vercel.app",
+      "category": ["fullstack", "ui", "productivity"],
+      "title": "Projectic",
+      "repo": "https://github.com/yourusername/projectic",
+      "description": "A project management tool for tracking timelines, identifying gaps, and making data-driven project decisions."
+    },
+    {
+      "id": 5,
+      "src": "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800",
+      "stack": ["JavaScript", "HTML", "CSS", "Node.js", "React", "Express", "MongoDB"],
+      "link": "https://wren-portfolio.vercel.app/taskmanager",
+      "category": ["fullstack"],
+      "title": "Human Resource Management",
+      "repo": "https://github.com/yourusername/hrms-app",
+      "description": "A full-stack HR management system designed to streamline employee workflows and productivity."
+    },
+    {
+      "id": 6,
+      "src": "https://images.unsplash.com/photo-1581090700227-1e37b190418e?w=800",
+      "stack": ["Python", "Odoo", "PostgreSQL", "XML", "JavaScript"],
+      "link": "https://wren-portfolio.vercel.app/taskmanager",
+      "category": ["enterprise", "backend"],
+      "title": "HRMS (Odoo)",
+      "repo": "https://github.com/yourusername/hrms-app",
+      "description": "An enterprise-grade HR system built with Odoo featuring employee management, attendance tracking, and payroll processing."
+    },
+    {
+      "id": 7,
+      "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+      "stack": ["React", "CSS", "OpenRouteService", "HERE Traffic API"],
+      "link": "https://eta-tracker-iota.vercel.app/",
+      "category": ["frontend", "react"],
+      "title": "Route Planner",
+      "repo": "https://github.com/hnddrx/router_planner",
+      "description": "An interactive route planning app with live traffic insights for smarter travel across the Philippines."
+    },
+    {
+      "id": 8,
+      "src": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800",
+      "stack": ["React", "CSS", "USGS API"],
+      "link": "https://quakeapp-rho.vercel.app/",
+      "category": ["frontend", "react"],
+      "title": "QuakeAlert",
+      "repo": "https://github.com/hnddrx/quakeapp",
+      "description": "A real-time earthquake monitoring app that visualizes nearby seismic activity and sends location-based alerts."
+    }
+  ]
+}
