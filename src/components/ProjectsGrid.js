@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ProjectsGrid = ({
   filteredprojects = [],
@@ -9,6 +9,36 @@ const ProjectsGrid = ({
 }) => {
   const [hoveredId, setHoveredId] = useState(null);
   const [showAll, setShowAll] = useState(false);
+  const [particles, setParticles] = useState([]);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+  // Generate particles on mount
+  useEffect(() => {
+    const generateParticles = () => {
+      const newParticles = [];
+      for (let i = 0; i < 20; i++) {
+        newParticles.push({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 3 + 1,
+          duration: Math.random() * 20 + 15,
+          delay: Math.random() * 5,
+        });
+      }
+      setParticles(newParticles);
+    };
+    generateParticles();
+  }, []);
+
+  // Track cursor position
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   // Normalize category to always be an array
   const displayedProjects = filteredprojects.filter(project => {
@@ -30,6 +60,40 @@ const ProjectsGrid = ({
       id="projects"
       className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20"
     >
+      {/* Custom cursor glow */}
+      <div 
+        className="fixed pointer-events-none z-50 mix-blend-screen"
+        style={{
+          left: `${cursorPos.x}px`,
+          top: `${cursorPos.y}px`,
+          transform: 'translate(-50%, -50%)',
+        }}
+      >
+        <div className={`w-8 h-8 rounded-full blur-xl transition-opacity duration-300 ${
+          darkMode ? 'bg-cyan-400/30' : 'bg-cyan-500/20'
+        }`}></div>
+      </div>
+
+      {/* Animated background particles */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            className={`absolute rounded-full ${
+              darkMode ? 'bg-cyan-400/20' : 'bg-cyan-500/15'
+            } animate-particle`}
+            style={{
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
+              width: `${particle.size}px`,
+              height: `${particle.size}px`,
+              animationDuration: `${particle.duration}s`,
+              animationDelay: `${particle.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Animated background gradient */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-float"></div>
@@ -42,17 +106,21 @@ const ProjectsGrid = ({
             {projectsToShow.map((project, index) => (
             <article
               key={project.id}
-              onClick={() => openLightbox(project)}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
               style={{ 
                 animationDelay: `${index * 100}ms`,
                 '--index': index 
               }}
-              className={`group relative overflow-hidden rounded-3xl cursor-pointer transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 ${theme.cardBg} shadow-xl hover:shadow-2xl ${
+              className={`group relative overflow-hidden rounded-3xl transform transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 ${theme.cardBg} shadow-xl hover:shadow-2xl ${
                 darkMode ? 'shadow-black/40 hover:shadow-cyan-500/20' : 'shadow-gray-300/50 hover:shadow-cyan-500/30'
               } animate-slide-up`}
             >
+              {/* Clickable overlay for opening lightbox */}
+              <div 
+                onClick={() => openLightbox(project)}
+                className="absolute inset-0 cursor-pointer z-30"
+              ></div>
               {/* Hover glow effect */}
               <div className={`absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-blue-500/0 to-cyan-500/0 group-hover:from-cyan-500/10 group-hover:via-blue-500/5 group-hover:to-cyan-500/10 transition-all duration-500 pointer-events-none z-10`}></div>
 
@@ -86,10 +154,10 @@ const ProjectsGrid = ({
               </div>
 
               {/* Info Panel */}
-              <div className="p-5 sm:p-6 space-y-3 relative z-20">
+              <div className="p-5 sm:p-6 space-y-3 relative z-40">
                 {/* Title with animated underline */}
                 <div className="relative inline-block w-full">
-                  <h3 className={`text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight ${theme.text} group-hover:text-cyan-500 transition-colors duration-300 truncate pr-8`}>
+                  <h3 className={`text-lg sm:text-xl lg:text-2xl font-semibold tracking-tight ${theme.text} group-hover:text-cyan-500 transition-colors duration-300 truncate pr-8 pointer-events-none`}>
                     {project.title}
                   </h3>
                   <div className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-300 ${
@@ -99,12 +167,12 @@ const ProjectsGrid = ({
 
                 {/* Description with line clamp */}
                 {project.description && (
-                  <p className={`text-sm ${theme.subtext} line-clamp-2 leading-relaxed`}>
+                  <p className={`text-sm ${theme.subtext} line-clamp-2 leading-relaxed pointer-events-none`}>
                     {project.description}
                   </p>
                 )}
 
-                {/* Categories with animated tags */}
+                {/* Categories with animated tags - clickable */}
                 {project.category && (
                   <div className="flex flex-wrap gap-2 max-h-16 overflow-hidden">
                     {(Array.isArray(project.category) ? project.category : [project.category]).slice(0, 3).map((cat, i) => (
@@ -117,7 +185,7 @@ const ProjectsGrid = ({
                             : 'bg-cyan-500/10 text-cyan-600 hover:bg-cyan-500/20'
                         } backdrop-blur-sm border border-cyan-500/20 ${
                           hoveredId === project.id ? 'animate-bounce-subtle' : ''
-                        } truncate max-w-[120px]`}
+                        } truncate max-w-[120px] pointer-events-none`}
                       >
                         {cat}
                       </span>
@@ -125,14 +193,14 @@ const ProjectsGrid = ({
                     {Array.isArray(project.category) && project.category.length > 3 && (
                       <span className={`text-xs px-3 py-1.5 rounded-full font-medium ${
                         darkMode ? 'bg-white/5 text-gray-400' : 'bg-gray-100 text-gray-600'
-                      }`}>
+                      } pointer-events-none`}>
                         +{project.category.length - 3}
                       </span>
                     )}
                   </div>
                 )}
 
-                {/* Tech Stack with icons */}
+                {/* Tech Stack with icons - clickable */}
                 {Array.isArray(project.stack) && project.stack.length > 0 && (
                   <div className="flex flex-wrap gap-2 pt-2 max-h-20 overflow-hidden">
                     {project.stack.slice(0, 4).map((tech, i) => (
@@ -143,7 +211,7 @@ const ProjectsGrid = ({
                           darkMode 
                             ? 'bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10' 
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
-                        } ${hoveredId === project.id ? 'animate-bounce-subtle' : ''} truncate max-w-[100px]`}
+                        } ${hoveredId === project.id ? 'animate-bounce-subtle' : ''} truncate max-w-[100px] pointer-events-none`}
                       >
                         {tech}
                       </span>
@@ -151,7 +219,7 @@ const ProjectsGrid = ({
                     {project.stack.length > 4 && (
                       <span className={`text-xs px-3 py-1.5 rounded-full font-medium ${
                         darkMode ? 'bg-white/5 text-gray-400 border border-white/10' : 'bg-gray-100 text-gray-600 border border-gray-200'
-                      }`}>
+                      } pointer-events-none`}>
                         +{project.stack.length - 4} more
                       </span>
                     )}
@@ -242,6 +310,30 @@ const ProjectsGrid = ({
       )}
 
       <style jsx>{`
+        @keyframes particle {
+          0%, 100% {
+            transform: translate(0, 0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            transform: translate(
+              ${Math.random() * 200 - 100}px,
+              ${Math.random() * 200 - 100}px
+            );
+            opacity: 0;
+          }
+        }
+
+        .animate-particle {
+          animation: particle linear infinite;
+        }
+
         @keyframes slideUp {
           from {
             opacity: 0;

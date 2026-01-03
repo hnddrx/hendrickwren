@@ -128,7 +128,7 @@ const DroneGallery = () => {
     <div className={`min-h-screen ${t.bg} transition-colors duration-500 relative overflow-hidden`}>
       {/* Custom cursor with trail effect - 3D Enhanced */}
       <div className="fixed inset-0 pointer-events-none z-50" style={{ perspective: '1000px' }}>
-        {/* Main cursor glow with 3D effect */}
+        {/* Main cursor - small dot only */}
         <div 
           className="absolute transition-all duration-100 ease-out"
           style={{
@@ -138,59 +138,47 @@ const DroneGallery = () => {
             transformStyle: 'preserve-3d',
           }}
         >
-          {/* Outer glow layers for depth */}
-          <div className={`absolute inset-0 w-20 h-20 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${
-            darkMode ? 'bg-cyan-400/40' : 'bg-cyan-500/30'
-          } animate-pulse-slow`}></div>
-          <div className={`absolute inset-0 w-16 h-16 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl ${
-            darkMode ? 'bg-cyan-300/50' : 'bg-cyan-400/40'
-          } animate-pulse-slower`}></div>
-          
-          {/* Middle ring */}
-          <div className={`absolute inset-0 w-6 h-6 -translate-x-1/2 -translate-y-1/2 rounded-full ${
-            darkMode ? 'bg-cyan-400/30' : 'bg-cyan-500/30'
-          } blur-sm animate-rotate`}></div>
-          
-          {/* Inner core with 3D effect */}
+          {/* Small glowing core */}
           <div className="absolute inset-0 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
             <div className={`w-2 h-2 rounded-full ${
-              darkMode ? 'bg-cyan-200' : 'bg-cyan-600'
-            } shadow-lg animate-float-tiny`}
+              darkMode ? 'bg-cyan-300' : 'bg-cyan-600'
+            } animate-float-tiny`}
             style={{
               boxShadow: darkMode 
-                ? '0 0 10px rgba(103, 232, 249, 0.8), 0 0 20px rgba(103, 232, 249, 0.4)' 
-                : '0 0 10px rgba(8, 145, 178, 0.8), 0 0 20px rgba(8, 145, 178, 0.4)'
+                ? '0 0 8px rgba(103, 232, 249, 0.6), 0 0 12px rgba(103, 232, 249, 0.3)' 
+                : '0 0 8px rgba(8, 145, 178, 0.6), 0 0 12px rgba(8, 145, 178, 0.3)'
             }}></div>
           </div>
         </div>
 
-        {/* 3D Cursor trail with depth */}
+        {/* Subtle 3D trail with mini lights */}
         {cursorTrail.map((pos, index) => {
           const progress = (index + 1) / cursorTrail.length;
-          const scale = 0.3 + progress * 0.7;
-          const depth = -index * 5;
+          const scale = 0.4 + progress * 0.6;
+          const depth = -index * 3;
           
           return (
             <div
               key={pos.id}
-              className="absolute mix-blend-screen"
+              className="absolute"
               style={{
                 left: `${pos.x}px`,
                 top: `${pos.y}px`,
                 transform: `translate(-50%, -50%) translateZ(${depth}px) scale(${scale})`,
-                opacity: progress * 0.5,
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                opacity: progress * 0.4,
+                transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                 transformStyle: 'preserve-3d',
               }}
             >
-              <div className={`rounded-full blur-xl ${
+              <div className={`rounded-full ${
                 darkMode ? 'bg-cyan-400' : 'bg-cyan-500'
               }`} style={{
-                width: `${16 - index * 1}px`,
-                height: `${16 - index * 1}px`,
+                width: `${6 - index * 0.4}px`,
+                height: `${6 - index * 0.4}px`,
+                filter: 'blur(1px)',
                 boxShadow: darkMode
-                  ? `0 0 ${20 - index * 1.5}px rgba(103, 232, 249, ${0.6 - index * 0.04})`
-                  : `0 0 ${20 - index * 1.5}px rgba(8, 145, 178, ${0.6 - index * 0.04})`
+                  ? `0 0 ${8 - index * 0.6}px rgba(103, 232, 249, ${0.5 - index * 0.03})`
+                  : `0 0 ${8 - index * 0.6}px rgba(8, 145, 178, ${0.5 - index * 0.03})`
               }}></div>
             </div>
           );
@@ -296,6 +284,8 @@ const DroneGallery = () => {
             opacity: 0;
           }
         }
+
+       
       `}</style>
     </div>
   );
