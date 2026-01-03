@@ -59,6 +59,8 @@ const DroneGallery = () => {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
+
+  
   // Theme configuration
   const theme = {
     dark: {
@@ -255,7 +257,7 @@ const DroneGallery = () => {
         />
       )}
 
-      <Chatbot darkMode={darkMode} />
+      <Chatbot darkMode={darkMode} theme={t} />
 
       {showRegistration && (
         <EmailForm
