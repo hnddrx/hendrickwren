@@ -10,13 +10,29 @@ import EmailForm from './EmailForm';
 import About from '../pages/About';
 import projectsData from '../data/projects.json';
 
+const getSystemTheme = () =>
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: dark)').matches;
+
 const DroneGallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState('all');
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(getSystemTheme);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showRegistration, setShowRegistration] = useState(false);
   const [filteredProjects, setFilteredProjects] = useState(projectsData.projects || []);
+
+  // Sync with system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleChange = (e) => {
+      setDarkMode(e.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   // Theme configuration
   const theme = {
@@ -128,9 +144,9 @@ const DroneGallery = () => {
       <Chatbot darkMode={darkMode} />
 
       {showRegistration && (
-        <EmailForm 
-          darkMode={darkMode} 
-          onClose={() => setShowRegistration(false)} 
+        <EmailForm
+          darkMode={darkMode}
+          onClose={() => setShowRegistration(false)}
         />
       )}
     </div>
