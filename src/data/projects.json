@@ -6,9 +6,9 @@
       "stack": ["React", "CSS", "Tailwind CSS"],
       "link": "https://navixph.vercel.app/",
       "category": ["frontend", "react", "experimental", "mobile"],
-      "title": "MRT3 Station Tracker",
+      "title": "Navix PH",
       "repo": "https://github.com/hnddrx/mrt3-tracker",
-      "description": "Real-time transit monitoring app for MRT3 commuters in Metro Manila, providing live train locations and arrival estimates."
+      "description": "Real-time transit monitoring app for MRT3, LRT1, and Carousel commuters in Metro Manila, providing live locations and arrival estimates."
     },
     {
       "id": 2,
@@ -112,4 +112,5 @@
     }
   ]
 }
+
 
