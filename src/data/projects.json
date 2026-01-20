@@ -4,7 +4,7 @@
       "id": 1,
       "src": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800",
       "stack": ["React", "CSS", "Tailwind CSS"],
-      "link": "https://station-tracker-one.vercel.app/",
+      "link": "https://navixph.vercel.app/",
       "category": ["frontend", "react", "experimental", "mobile"],
       "title": "MRT3 Station Tracker",
       "repo": "https://github.com/hnddrx/mrt3-tracker",
@@ -112,3 +112,4 @@
     }
   ]
 }
+
