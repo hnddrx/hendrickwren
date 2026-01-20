@@ -7,7 +7,7 @@
       "link": "https://navixph.vercel.app/",
       "category": ["frontend", "react", "experimental", "mobile"],
       "title": "Navix PH",
-      "repo": "https://github.com/hnddrx/mrt3-tracker",
+      "repo": "https://github.com/hnddrx/navixph",
       "description": "Real-time transit monitoring app for MRT3, LRT1, and Carousel commuters in Metro Manila, providing live locations and arrival estimates."
     },
     {
@@ -112,5 +112,6 @@
     }
   ]
 }
+
 
 
